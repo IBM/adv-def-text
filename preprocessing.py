@@ -591,18 +591,18 @@ if __name__ == '__main__':
     # combine_vocab('../nmt/data/yelp_clss/vocab.in', '../nmt/data/imdb/imdb-400/vocab.txt')
     # combine_all_vocab('/Volumes/YING_backup/datasets/para7090/para90', size=12)
     #
-    # glove_vocab('/Users/yxu132/pub-repos/decaNLP/embeddings/glove.840B.300d.txt')
+    glove_vocab('/Users/yxu132/pub-repos/decaNLP/embeddings/glove.840B.300d.txt')
     # filter_emb('/dccstor/ddig/ying/data/snli/vocab.in', glove_emb_path+'/glove.840B.300d.txt',
     #            output_path='/dccstor/ddig/ying/data/snli/emb.json')
-    # gen_emb_for_vocab('/dccstor/ddig/ying/data/snli/vocab.in',
-    #                   '/Users/yxu132/pub-repos/usif/vectors/czeng.txt',
-    #                   '/dccstor/ddig/ying/data/snli/snli-vocab-paranmt-emb.json')
-    # transform_cf_emb('/dccstor/ddig/ying/data/snli/vocab.in',
-    #                  '/dccstor/ddig/ying/data/snli/emb.json',
-    #                  '/dccstor/ddig/ying/data/TextFooler/vocab.txt',
-    #                  '/dccstor/ddig/ying/data/TextFooler/counter-fitted-emb.json',
-    #                  '/dccstor/ddig/ying/data/snli/copy_vocab.in',
-    #                  '/dccstor/ddig/ying/data/snli/copy_emb.json')
+    gen_emb_for_vocab('/dccstor/ddig/ying/data/snli/vocab.in',
+                      '/Users/yxu132/pub-repos/usif/vectors/czeng.txt',
+                      '/dccstor/ddig/ying/data/snli/snli-vocab-paranmt-emb.json')
+    transform_cf_emb('/dccstor/ddig/ying/data/snli/vocab.in',
+                     '/dccstor/ddig/ying/data/snli/emb.json',
+                     '/dccstor/ddig/ying/data/TextFooler/vocab.txt',
+                     '/dccstor/ddig/ying/data/TextFooler/counter-fitted-emb.json',
+                     '/dccstor/ddig/ying/data/snli/copy_vocab.in',
+                     '/dccstor/ddig/ying/data/snli/copy_emb.json')
     # split_dataset('/Users/yxu132/pub-repos/nmt/data/yelp_clss_x3/yelp_train.balanced.in',
     #               '/Users/yxu132/pub-repos/nmt/data/yelp_clss_x3/yelp_train.balanced.label.bin.out',
     #               '/Users/yxu132/pub-repos/nmt/data/yelp_clss_x3/train_splits/')
