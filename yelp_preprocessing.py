@@ -18,8 +18,8 @@ args = parser.parse_args()
 def parse_json():
     texts = []
     ratings = []
-    # for line in open(args.data_dir+'/yelp_academic_dataset_review.json', 'r'):
-    for line in open(args.data_dir + '/sample.json', 'r'):
+    for line in open(args.data_dir+'/yelp_academic_dataset_review.json', 'r'):
+    # for line in open(args.data_dir + '/sample.json', 'r'):
         example = json.loads(line)
         texts.append(example['text'].replace('\n', ' ').replace('\r', ''))
         ratings.append(example['stars'])
@@ -309,6 +309,26 @@ def transform_cf_emb():
     writeLines(new_cf_vocab, args.data_dir + '/cf_vocab.in')
     json.dump(new_emb, open(args.data_dir + '/cf_emb.json', 'w'))
 
+def split_pos_neg():
+
+    input_sents = readLinesList(args.data_dir+'/train.in')
+    labels = readLinesList(args.data_dir+'/train.out')
+
+    pos_out_file = open(args.data_dir+'/train.pos.in', 'w')
+    neg_out_file = open(args.data_dir+'/train.neg.in', 'w')
+    pos_lab_file = open(args.data_dir+'/train.pos.out', 'w')
+    neg_lab_file = open(args.data_dir+'/train.neg.out', 'w')
+
+    for ind, sent in enumerate(input_sents):
+        label = labels[ind]
+        if label == '1.0 0.0':
+            neg_out_file.write(sent+'\n')
+            neg_lab_file.write(label+'\n')
+        elif label == '0.0 1.0':
+            pos_out_file.write(sent + '\n')
+            pos_lab_file.write(label + '\n')
+
+
 if __name__ == '__main__':
     print("Step 1: Parse json file...")
     parse_json()
@@ -318,5 +338,7 @@ if __name__ == '__main__':
     binarise_and_balance()
     print("\nStep 4: Counter-fitted embedding extraction...")
     transform_cf_emb()
+    print("\nStep 5: Split train set into pos/neg examples (for conditional generation only)...")
+    split_pos_neg()
 
 
