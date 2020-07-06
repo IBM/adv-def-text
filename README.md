@@ -12,7 +12,7 @@ Please refer to requirement.txt for detailed packages
 
 ## Introduction
 
-This is an implementation for the paper: Grey-box Adversarial Attack and Defence for Text. 
+This is an implementation for the paper: "Grey-box Adversarial Attack and Defence for Text". 
 The paper is currently submitted to EMNLP'20. 
 
 ## Run training and test
